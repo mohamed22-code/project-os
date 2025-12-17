@@ -9,8 +9,12 @@ jobs:
 
     steps:
 
-      - name: "print before"
-        run: ls
-      - uses: actions/checkout@v3  
-      - name: "print After"
-        run: ls
+      - uses: actions/checkout@v3 
+       
+      - name: "Login to Dockerhup"
+        run: docker login --username ${{ secrets.DOCKER_USER_NAME }} --password ${{ secrets.DOCKER_TOKEN }}
+      - name: 'Build Image'
+        run: docker build -t ${{ secrets.DOCKER_USER_NAME }}/mohamed-nasr-2023040235 .
+
+      - name: 'Push Image'
+        run: docker push ${{ secrets.DOCKER_USER_NAME }}/mohamed-nasr-2023040235  
