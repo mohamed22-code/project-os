@@ -9,7 +9,8 @@ jobs:
 
     steps:
 
-      - name: "test git hub"
-        run: pwd
-      - name: 'test print'
-        run: echo mohamed
+      - name: "print before"
+        run: ls
+      - uses: actions/checkout@v3  
+      - name: "print After"
+        run: ls
